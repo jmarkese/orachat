@@ -8,11 +8,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class SessionTest extends TestCase
 {
     /**
-     * Test the Session Create Endpoint.
+     * Test the Session Store Endpoint.
      *
      * @return void
      */
-    public function testCreate()
+    public function testStore()
     {
         $this->assertTrue(true);
     }

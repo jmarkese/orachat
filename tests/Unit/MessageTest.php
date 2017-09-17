@@ -18,11 +18,11 @@ class MessageTest extends TestCase
     }
 
     /**
-     * Test the Message Create Endpoint.
+     * Test the Message Store Endpoint.
      *
      * @return void
      */
-    public function testCreate()
+    public function testStore()
     {
         $this->assertTrue(true);
     }
