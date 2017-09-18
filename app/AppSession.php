@@ -11,9 +11,20 @@ use Illuminate\Database\Eloquent\Model;
 class AppSession extends Model
 {
     /**
+     * No mass assignable attributes on the app session.
      * @var array
      */
     protected $fillable = [];
+
+    /**
+     * A session has many app messages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function appmessages()
+    {
+        return $this->hasmany(AppMessage::class);
+    }
 
     /**
      * Override the Eloquent Model. Save a new model to the database with a random uid string.
