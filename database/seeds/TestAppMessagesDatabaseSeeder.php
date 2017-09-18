@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\AppMessage;
 
-class TestMessagesDatabaseSeeder extends Seeder
+class TestAppMessagesDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
