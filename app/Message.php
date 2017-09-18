@@ -9,8 +9,8 @@ class Message extends Model
 {
     protected $fillable = ['message'];
 
-    public function session()
+    public function appsession()
     {
-        return $this->belongsTo(Session::class);
+        return $this->belongsTo(AppSession::class);
     }
 }
