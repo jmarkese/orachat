@@ -14,7 +14,10 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+    static $password;
+
     return [
-        'username' => $faker->name,
+        'app_session_id' => $faker->numberBetween(1,5),
+        'message' => $faker->sentence
     ];
 });

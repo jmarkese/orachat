@@ -14,16 +14,36 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['username'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $visible = ['username'];
+
+    /**
+     * A user has many messages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasmany(Message::class);
+    }
+
+    /**
+     * Override the Eloquent Model. Save a new model to the database with a random uid string.
+     *
+     * @param array $options
+     * @return bool
+     */
+    public function save(array $options = [])
+    {
+        if (empty($this->uid)) {
+            $this->username = 'user' . substr(uniqid(), -6);
+        }
+        return parent::save($options);
+    }
 }

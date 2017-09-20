@@ -18,11 +18,18 @@ class AppMessage extends Model
     protected $fillable = ['message'];
 
     /**
+     * The attributes that should be visible in arrays.
+     *
+     * @var array
+     */
+    protected $visible = ['created_at', 'message'];
+
+    /**
      * An app message belongs to an app session
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function appsession()
+    public function user()
     {
-        return $this->belongsTo(AppSession::class);
+        return $this->belongsTo(User::class);
     }
 }

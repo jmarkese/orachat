@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Message;
+use App\AppMessage;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -14,7 +14,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        return AppMessage::all();
     }
 
     /**
@@ -25,6 +25,8 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = AppMessage::create($request->all());
+
+        return response()->json($message, 201)->header('Content-Type', env('API_CONTENT_TYPE'));
     }
 }
