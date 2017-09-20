@@ -21,7 +21,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $visible = ['username'];
+    protected $visible = ['id','username'];
 
     /**
      * A user has many messages

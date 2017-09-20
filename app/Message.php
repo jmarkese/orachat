@@ -2,14 +2,13 @@
 
 namespace App;
 
-use App\AppSession;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class AppMessage
  * @package App
  */
-class AppMessage extends Model
+class Message extends Model
 {
     /**
      * Message is the only mass assignable attribute.

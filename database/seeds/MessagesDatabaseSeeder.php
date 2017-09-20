@@ -1,9 +1,9 @@
 <?php
 
+use App\Message;
 use Illuminate\Database\Seeder;
-use App\AppMessage;
 
-class AppMessagesDatabaseSeeder extends Seeder
+class MessagesDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +12,9 @@ class AppMessagesDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        AppMessage::truncate();
-        $faker = \Faker\Factory::create();
+        Message::truncate();
 
         // generate a few app messages for our app:
-        factory(\App\Message::class, 25)->create();
+        factory(Message::class, 25)->create();
     }
 }
