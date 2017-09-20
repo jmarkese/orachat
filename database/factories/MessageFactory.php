@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\Message;
 use Faker\Generator as Faker;
 
 /*
@@ -14,8 +14,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Message::class, function (Faker $faker) {
     return [
-        'username' => $faker->name,
+        'user_id' => $faker->numberBetween(1,5),
+        'message' => $faker->sentence
     ];
 });
