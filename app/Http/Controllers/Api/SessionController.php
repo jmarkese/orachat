@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SessionResource;
+use App\Traits\JsonApiReponse;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class SessionController extends Controller
 {
+
+    use JsonApiReponse;
+
     /**
      * Store a newly created resource in storage.
      *
@@ -19,6 +23,8 @@ class SessionController extends Controller
     {
         $user = \App\User::create($request->all());
         $token = JWTAuth::fromUser($user);
+
+        return $this->jsonApi(new SessionResource($user), $token);
 
         SessionResource::withoutWrapping();
         return (new SessionResource($user))

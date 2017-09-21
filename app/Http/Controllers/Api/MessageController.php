@@ -7,10 +7,13 @@ use App\Http\Resources\MessageResource;
 use App\Http\Resources\MessagesResource;
 use App\Message;
 use Illuminate\Http\Request;
+use App\Traits\JsonApiReponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class MessageController extends Controller
 {
+
+    use JsonApiReponse;
 
     /**
      * Display a listing of the resource.
@@ -19,7 +22,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return new MessagesResource(Message::with(['user'])->paginate());
+        $resource = new MessagesResource(Message::with(['user'])->paginate());
+        return $this->jsonApi($resource);
     }
 
     /**
@@ -32,14 +36,11 @@ class MessageController extends Controller
     {
         $request->validate([
             'message' => 'required',
+            'user_id' => 'required',
         ]);
 
         $message = \App\Message::create($request->all());
-        MessageResource::withoutWrapping();
-        return (new MessageResource($message))
-            ->response()
-            ->header('Authorization', 'Bearer ' . $request->token)
-            ->header('Contnent-type', 'application/vnd.api+json');
+        return $this->jsonApi(new MessageResource($message));
     }
 
     /**
