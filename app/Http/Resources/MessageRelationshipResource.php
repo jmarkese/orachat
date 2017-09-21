@@ -15,12 +15,12 @@ class MessageRelationshipResource extends Resource
     public function toArray($request)
     {
         return [
-            'creator'   => [
+            'creator' => [
                 'links' => [
-                    'self'    => route('messages.relationships.creator', ['messages' => $this->id]),
+                    'self' => route('messages.relationships.creator', ['messages' => $this->id]),
                     'related' => route('messages.creator', ['messages' => $this->id]),
                 ],
-                'data'  => new UserResource($this->user),
+                'data' => new UserResource($this->user),
             ],
         ];
     }

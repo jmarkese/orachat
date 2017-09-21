@@ -15,12 +15,12 @@ class SessionRelationshipResource extends Resource
     public function toArray($request)
     {
         return [
-            'creator'   => [
+            'creator' => [
                 'links' => [
-                    'self'    => route('sessions.relationships.creator', ['sessions' => $this->id]),
+                    'self' => route('sessions.relationships.creator', ['sessions' => $this->id]),
                     'related' => route('sessions.creator', ['sessions' => $this->id]),
                 ],
-                'data'  => new UserResource($this->resource),
+                'data' => new UserResource($this->resource),
             ],
         ];
     }
