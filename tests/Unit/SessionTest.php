@@ -14,6 +14,13 @@ class SessionTest extends TestCase
      */
     public function testStore()
     {
-        $this->assertTrue(true);
+        $response = $this->json('POST', 'api/v1/sessions', [], ['content-type' => env('CONTENT_TYPE')]);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'data' => ['type' => 'sessions'],
+            ])
+            ->assertHeader("Authorization");
     }
 }
