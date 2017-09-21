@@ -16,6 +16,7 @@ class SessionTest extends TestCase
     {
         $response = $this->json('POST', 'api/v1/sessions', [], ['content-type' => env('CONTENT_TYPE')]);
 
+        // Test creating a session
         $response
             ->assertStatus(201)
             ->assertJson([

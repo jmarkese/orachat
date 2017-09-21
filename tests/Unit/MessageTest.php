@@ -28,9 +28,11 @@ class MessageTest extends TestCase
      */
     public function testIndex()
     {
+        // Test unauthenticated user
         $response = $this->json('GET', 'api/v1/messages', [], $this->createHeader(false));
         $response->assertStatus(401);
 
+        // Test authenticated user
         $response = $this->json('GET', 'api/v1/messages', [], $this->createHeader());
         $response
             ->assertStatus(200)
@@ -50,9 +52,15 @@ class MessageTest extends TestCase
      */
     public function testStore()
     {
+        // Test unauthenticated user
         $response = $this->json('POST', 'api/v1/messages', [], $this->createHeader(false));
         $response->assertStatus(401);
 
+        // Test validation
+        $response = $this->json('POST', 'api/v1/messages', [], $this->createHeader(true));
+        $response->assertStatus(422);
+
+        // Test authenticated user
         $response = $this->json('POST', 'api/v1/messages', ['message' => 'test message'], $this->createHeader());
         $response
             ->assertStatus(201)
