@@ -25,12 +25,6 @@ class SessionController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return $this->jsonApi(new SessionResource($user), $token);
-
-        SessionResource::withoutWrapping();
-        return (new SessionResource($user))
-            ->response()
-            ->header('Authorization', 'Bearer ' . $token)
-            ->header('Contnent-type', 'application/vnd.api+json');
     }
 
     /**
