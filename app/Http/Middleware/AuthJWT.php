@@ -13,20 +13,20 @@ class AuthJWT
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         try {
-            if (! $user = JWTAuth::parseToken()->authenticate()) {
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
                 $status = 403;
                 return response()->json(
                     [
-                        'error'=> [
+                        'error' => [
                             'title' => "You cannot perform this action.",
-                            "status" => (string) $status
+                            "status" => (string)$status
                         ]
                     ], $status);
             }
@@ -36,13 +36,13 @@ class AuthJWT
                 $status = 401;
                 return response()->json(
                     [
-                        'error'=> [
+                        'error' => [
                             'title' => 'Unauthorized request or authorization failure.',
-                            "status" => (string) $status
+                            "status" => (string)$status
                         ]
                     ], $status);
             } else {
-                return response()->json(['error'=> ['title' => 'Something is wrong']]);
+                return response()->json(['error' => ['title' => 'Something is wrong']]);
             }
         }
         return $next($request);

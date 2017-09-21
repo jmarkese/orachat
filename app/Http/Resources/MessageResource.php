@@ -16,7 +16,7 @@ class MessageResource extends Resource
     {
         return [
             "type" => "messages",
-            "id" => (string) $this->id,
+            "id" => (string)$this->id,
             "attributes" => $this->resource->toArray(),
             "links" => [
                 "self" => route('messages.show', $this)

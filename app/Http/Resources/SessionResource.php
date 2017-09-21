@@ -17,7 +17,7 @@ class SessionResource extends Resource
     {
         return [
             "type" => "sessions",
-            "id" => (string) $this->id,
+            "id" => (string)$this->id,
             "attributes" => [
                 "created_at" => Carbon::now()
             ],

@@ -12,7 +12,7 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -23,14 +23,14 @@ class SessionController extends Controller
         SessionResource::withoutWrapping();
         return (new SessionResource($user))
             ->response()
-            ->header('Authorization',  'Bearer ' . $token)
+            ->header('Authorization', 'Bearer ' . $token)
             ->header('Contnent-type', 'application/vnd.api+json');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Resources\Json\Resource
      */
     public function show(User $id)
