@@ -14,7 +14,7 @@ class Message extends Model
      * Message is the only mass assignable attribute.
      * @var array
      */
-    protected $fillable = ['message'];
+    protected $fillable = ['message', 'user_id'];
 
     /**
      * The attributes that should be visible in arrays.
