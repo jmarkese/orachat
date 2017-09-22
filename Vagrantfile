@@ -36,11 +36,11 @@ echo "Apache Changes"
 echo "============================================"
 sudo cat > /etc/apache2/sites-enabled/scotchbox.local.conf <<VHOSTCONF
 <VirtualHost *:80>
-    DocumentRoot "/var/www/orachat/public"
+    DocumentRoot "/var/www/public"
     ServerName orachat.dev
     ErrorLog "${APACHE_LOG_DIR}/orachat-error_log"
     CustomLog "${APACHE_LOG_DIR}/orachat-access_log" common
-    <Directory "/var/www/orachat/public">
+    <Directory "/var/www/public">
         AllowOverride All
         Order allow,deny
         Allow from all
