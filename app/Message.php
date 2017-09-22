@@ -31,4 +31,9 @@ class Message extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getCreatedAtAttribute($value) {
+        $date = new \Carbon\Carbon($value);
+        return $date->toIso8601String();
+    }
 }

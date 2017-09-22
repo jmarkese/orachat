@@ -19,7 +19,7 @@ class SessionResource extends Resource
             "type" => "sessions",
             "id" => (string)$this->id,
             "attributes" => [
-                "created_at" => Carbon::now()
+                "created_at" => Carbon::now()->toIso8601String()
             ],
             "links" => [
                 "self" => route('messages.show', $this)
