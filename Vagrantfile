@@ -36,18 +36,18 @@ echo "Apache Changes"
 echo "============================================"
 sudo cat > /etc/apache2/sites-enabled/scotchbox.local.conf <<VHOSTCONF
 <VirtualHost *:80>
-    DocumentRoot "/var/www/public"
+    DocumentRoot "/var/www/laravel55/public"
     ServerName orachat.dev
     ErrorLog "${APACHE_LOG_DIR}/orachat-error_log"
     CustomLog "${APACHE_LOG_DIR}/orachat-access_log" common
-    <Directory "/var/www/public">
+    <Directory "/var/www//laravel55/public">
         AllowOverride All
         Order allow,deny
         Allow from all
     </Directory>
 </VirtualHost>
 VHOSTCONF
-cd /var/www/
+cd /var/www/laravel55
 cp .env.example .env
 php artisan key:generate
 sudo apt-get update
